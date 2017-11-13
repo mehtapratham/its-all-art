@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 
 // Get our API routes
 const api = require('./server/routes/api');
-const user = require('./server/controllers/users.controller');
+const user = require('./server/routes/users.routes');
 
 const app = express();
 
