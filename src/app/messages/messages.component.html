@@ -1,0 +1,6 @@
+<div class="message-container">
+    <div *ngFor="let msg of msgs" [ngClass]="(msg.own)?'msg-right':'msg-left'">{{msg.msg}}</div>
+    <form (ngSubmit)="sendMessage()">
+        <input type="text" name="msg-input" [(ngModel)]="msgValue" placeholder="Type and press enter"/>
+    </form>
+</div>

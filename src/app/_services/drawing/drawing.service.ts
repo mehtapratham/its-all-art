@@ -10,8 +10,34 @@ export class DrawingService {
 
     constructor(private _http: Http) { }
 
-    getDrawings() {
-        return this._http.get('/api/all').map(result => this.result = result.json());
+    getDrawings(id: string) {
+        return this._http
+            .get('/api/' + id + '/all')
+            .map(result => this.result = result.json());
+    }
+
+    getSharedWithMeDrawings(id: string) {
+        return this._http
+            .get('/api/' + id + '/shared-with-me')
+            .map(result => this.result = result.json());
+    }
+
+    createNewDrawing(id: string){
+        return this._http
+            .post('/api/new', {id: id, title: "new untitled document"})
+            .subscribe(result => this.result = result);
+    }
+
+    addGraphic(graphic: any) {
+        return this._http
+            .post('/api/add/graphic', graphic)
+            .subscribe(results => this.result = results);
+    }
+
+    getGraphics(id: string) {
+        return this._http
+            .get('/api/' + id + '/all/graphics')
+            .map(result => this.result = result.json());
     }
 
 }

@@ -4,4 +4,6 @@ export class User {
     password: string;
     firstName: string;
     lastName: string;
+    drawings: [any];
+    sharedWithMe: [any];
 }

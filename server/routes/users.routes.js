@@ -5,6 +5,7 @@ const config = require('../../config/config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Users = require('../models/user');
+const Drawings = require('../models/drawing');
 const mongoose = require('mongoose');
 
 router.post('/authenticate', (req, res) => {
@@ -29,6 +30,30 @@ router.post('/authenticate', (req, res) => {
             // authentication failed
             res.status(400).send('Username or password is incorrect');
         }
+    });
+});
+
+router.post('/shared', (req, res) => {
+    let userId = req.body.user;
+    let currentDoc = req.body.doc;
+
+    Users.findById(userId).exec((err, user) => {
+        if(err) {
+            res.status(400).send(err);
+        }
+
+        Drawings.findById(currentDoc).exec((err, drawing) => {
+            if(err) {
+                res.status(400).send(err);
+            }
+            user.sharedWithMe.push(drawing);
+            user.save();
+
+            drawing.sharedWith.push(user);
+            drawing.save();
+
+            res.sendStatus(200);
+        });
     });
 });
 
@@ -70,22 +95,27 @@ router.post('/register', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    Users.find({}).exec((err, users) => {
-        if (err) {
-            res.status(400).send(err.name + ': ' + err.message);
-        }
+    Users.find({})
+        .populate('drawings')
+        .populate('sharedWithMe')
+        .exec((err, users) => {
+            if (err) {
+                res.status(400).send(err.name + ': ' + err.message);
+            }
 
-        // return users (without hashed passwords)
-        users = users.map((user) => {
-            return {
-                _id: user._id,
-                username: user.username,
-                firstName: user.firstName,
-                lastName: user.lastName,
-            };
+            // return users (without hashed passwords)
+            users = users.map((user) => {
+                return {
+                    _id: user._id,
+                    username: user.username,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    drawings: user.drawings,
+                    sharedWithMe: user.sharedWithMe
+                };
+            });
+            res.send(users);
         });
-        res.send(users);
-    });
 });
 
 router.get('/current', (req, res) => {

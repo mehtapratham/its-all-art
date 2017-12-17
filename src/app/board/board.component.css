@@ -1,0 +1,7 @@
+.app-board {
+    position: absolute;
+    border: 1px solid black;
+}
+.app-board-container {
+    position: relative;
+}

@@ -6,7 +6,7 @@ import { User } from '../../_models/user';
 @Injectable()
 export class UserService {
     constructor(private http: Http) { }
-
+    result: any;
     getAll() {
         return this.http.get('/users').map((response: Response) => response.json());
     }
@@ -25,5 +25,11 @@ export class UserService {
 
     delete(_id: string) {
         return this.http.delete('/users/' + _id);
+    }
+
+    addToSharedWithMe(user: User, curDoc: string) {
+        return this.http
+            .post('/users/shared', {'user': user._id, 'doc': curDoc})
+            .subscribe(result => this.result = result);
     }
 }

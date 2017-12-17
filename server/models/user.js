@@ -8,6 +8,8 @@ const userSchema = new Schema({
     firstName: String,
     lastName: String,
     hash: String,
+    drawings: [{type: Schema.Types.ObjectId, ref: 'drawing'}],
+    sharedWithMe: [{type: Schema.Types.ObjectId, ref: 'drawing'}]
 });
 
 module.exports = mongoose.model('user', userSchema);

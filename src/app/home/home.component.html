@@ -2,4 +2,8 @@
     <h1>Hi {{currentUser.firstName}}!</h1>
     <div><p>This is your lobby</p></div>
     <p><a [routerLink]="['/login']">Logout</a></p>
+    <button class="btn btn-secondary" (click)="createNewDrawing($event)">Create New</button>
+    <div class="drawing-item" *ngFor="let drawing of drawings">
+        <a [routerLink]="['/document/'+ drawing._id]">{{drawing.title}}</a>
+    </div>
 </div>

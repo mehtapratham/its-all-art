@@ -1,0 +1,19 @@
+<tools
+    [currentTool] = "curTool"
+    [currentDoc] = "currentDoc"
+    (toolChange) = "updateBoard($event)"
+    (strokeChange) = "updateStrokeColor($event)"
+    (fillChange) = "updateFillColor($event)"
+></tools>
+<app-messages
+    [currentDoc] = "currentDoc"
+></app-messages>
+<div class="app-board-container">
+    <canvas #appBoardDup id="board-element-dup" class="app-board" width="595" height="842"></canvas>
+    <canvas #appBoard
+        (mousedown)="onMouseDown($event)"
+        (mousemove)="onMouseMove($event)"
+        (mouseup)="onMouseUp($event)"
+        id="board-element" class="app-board" width="595" height="842"
+    ></canvas>
+</div>
