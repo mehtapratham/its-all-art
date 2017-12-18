@@ -9,11 +9,7 @@ const Messages = require('../models/message');
 const _ = require('lodash');
 
 mongoose.Promise = global.Promise;
-mongoose.connection.openUri(config.dbUrl, (err) => {
-    if (err) {
-        console.log('Error Connecting', err);
-    }
-});
+mongoose.connect(config.dbUrl, {useMongoClient: true});
 
 router.get('/messages/:id', (req, res) => {
     let id = req.params.id;
