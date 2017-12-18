@@ -7,8 +7,7 @@ import 'rxjs/add/operator/map'
 
 @Component({
     selector: 'app-messages',
-    templateUrl: './messages.component.html',
-    styleUrls: ['./messages.component.css']
+    templateUrl: './messages.component.html'
 })
 export class MessagesComponent implements OnInit {
 
@@ -39,16 +38,16 @@ export class MessagesComponent implements OnInit {
     }
 
     getMessages() {
-        this.msgService.getMessages(this.currentDoc, this.currentUser._id).subscribe(result => {
+        this.msgService.getMessages(this.currentDoc).subscribe(result => {
             this.msgs = result.map(m => {
-                m.own = m.by === this.currentUser._id;
+                m.own = m.by === this.currentUser.username;
                 return m;
             });
         });
     }
 
     sendMessage() {
-        this.msgService.sendMessage(this.currentDoc, this.msgValue, this.currentUser._id);
+        this.msgService.sendMessage(this.currentDoc, this.msgValue, this.currentUser.username);
         this.msgValue = "";
     }
 

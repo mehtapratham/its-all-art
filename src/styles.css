@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import './app/board/board.component.css';
+@import './app/home/home.component.css';
+@import './app/login/login.component.css';
+@import './app/messages/messages.component.css';
+@import './app/register/register.component.css';
+@import './app/tools/tools.component.css';
+@import './app/app.component.css';
+@import './app/_directives/alert/alert.component.css';

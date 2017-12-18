@@ -1,13 +1,13 @@
 <div class="tools-container">
-    <div class="btn-group" role="group" >
+    <h2 class="doc-title">{{title}}</h2>
+    <div class="btn-group shape-selector" role="group" >
         <button type="button" class="btn btn-secondary"
             *ngFor="let tool of tools; let i=index" (click)="updateTool($event, i)"
             [ngClass]="{active:currentTool===i}">
             {{tool}}
         </button>
-        <button (click)="show = true" class="btn btn-secondary">Share</button>
     </div>
-    <div class="dropdown">
+    <div class="dropdown color-selector">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Stroke color
         </button>
@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="dropdown">
+    <div class="dropdown color-selector">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Fill color
         </button>
@@ -47,14 +47,23 @@
         </div>
     </div>
 
-    <div *ngIf="show">
-        <ul>
-            <li *ngFor="let user of existingUsers">
+
+    <div class="dropdown share-with-users">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Share
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <h6 class="dropdown-header">Already shared with</h6>
+            <div class="dropdown-divider"></div>
+            <div *ngFor="let user of existingUsers" class="dropdown-item disabled">
                 {{user.firstName}} {{user.lastName}}
-            </li>
-            <li *ngFor="let user of users" (click)="addToSharedWithMe($event, user)">
+            </div>
+            <div class="dropdown-divider"></div>
+            <h6 class="dropdown-header">Can be shared with</h6>
+            <div class="dropdown-divider"></div>
+            <div *ngFor="let user of users" (click)="addToSharedWithMe($event, user)" class="dropdown-item">
                 {{user.firstName}} {{user.lastName}}
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
 </div>

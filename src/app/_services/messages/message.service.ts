@@ -8,15 +8,15 @@ export class MessageService {
 
     constructor(private _http: Http) { }
 
-    getMessages(docId: string, userId: string) {
+    getMessages(docId: string) {
         return this._http
-            .get('/api/messages/' + docId + '/' + userId)
+            .get('/api/messages/' + docId)
             .map(result => this.result = result.json());
     }
 
-    sendMessage(docId: string, msg: string, userId: string) {
+    sendMessage(docId: string, msg: string, username: string) {
         return this._http
-            .post('/api/send/message', {'docId': docId, 'msg': msg, 'userId': userId})
+            .post('/api/send/message', {'docId': docId, 'msg': msg, 'username': username})
             .subscribe(result => this.result = result);
     }
 

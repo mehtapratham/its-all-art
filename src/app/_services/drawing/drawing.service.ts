@@ -22,10 +22,9 @@ export class DrawingService {
             .map(result => this.result = result.json());
     }
 
-    createNewDrawing(id: string){
+    createNewDrawing(id: string, filename: string){
         return this._http
-            .post('/api/new', {id: id, title: "new untitled document"})
-            .subscribe(result => this.result = result);
+            .post('/api/new', {id: id, title: filename});
     }
 
     addGraphic(graphic: any) {

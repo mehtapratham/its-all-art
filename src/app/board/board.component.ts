@@ -7,8 +7,7 @@ import { DrawingService } from '../_services/drawing/drawing.service';
 
 @Component({
     selector: 'app-board',
-    templateUrl: './board.component.html',
-    styleUrls: ['./board.component.css']
+    templateUrl: './board.component.html'
 })
 export class BoardComponent implements OnInit {
 
@@ -33,6 +32,7 @@ export class BoardComponent implements OnInit {
     currentDoc: string;
     timer: any;
     curUser: any;
+    title: string;
 
     constructor(
         private drawingService: DrawingService,
@@ -49,6 +49,7 @@ export class BoardComponent implements OnInit {
         this.scope1.activate();
 
         this.currentDoc = this.route.snapshot.params['docId'];
+        this.title = this.route.snapshot.params['title'];
         this.getExistingGraphics.bind(this);
 
 
@@ -65,6 +66,7 @@ export class BoardComponent implements OnInit {
             .subscribe(graphics => {
                 graphics.map((item) => {
                     if(initialLoad || item.by !== this.curUser.username){
+                        let currentStrokeColor = this.strokeColor;
                         this.startX = item.left;
                         this.startY = item.top;
                         this.strokeColor = item.strokeColor;
@@ -94,6 +96,7 @@ export class BoardComponent implements OnInit {
                         this.points = [];
                         this.startX = null;
                         this.startY = null;
+                        this.strokeColor = currentStrokeColor;
                     }
                 });
             });
@@ -102,7 +105,7 @@ export class BoardComponent implements OnInit {
     onMouseUp() {
         if(this.mouseDown) {
 
-            this.moveElementsToOriginal();
+            // this.moveElementsToOriginal();
 
             let graphic = {
                 props: {

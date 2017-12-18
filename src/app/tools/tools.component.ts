@@ -4,8 +4,7 @@ import { UserService } from '../_services/user/user.service';
 
 @Component({
     selector: 'tools',
-    templateUrl: './tools.component.html',
-    styleUrls: ['./tools.component.css']
+    templateUrl: './tools.component.html'
 })
 export class ToolsComponent implements OnInit {
 
@@ -14,6 +13,9 @@ export class ToolsComponent implements OnInit {
 
     @Input('currentDoc')
     curDoc: string;
+
+    @Input('title')
+    title: string;
 
     tools:string[] = ["Pencil", "Square", "Rectangle", "Circle"];
     colors: string[] = [

@@ -1,6 +1,9 @@
 <div class="message-container">
-    <div *ngFor="let msg of msgs" [ngClass]="(msg.own)?'msg-right':'msg-left'">{{msg.msg}}</div>
+    <h2 class="msg-header">ChatterBot</h2>
+    <div class="messages">
+        <div *ngFor="let msg of msgs" class="msg-item" [ngClass]="(msg.own)?'msg-right':'msg-left'"><div class="msg-owner">{{msg.by}}</div><div class="msg-text">{{msg.msg}}</div></div>
+    </div>
     <form (ngSubmit)="sendMessage()">
-        <input type="text" name="msg-input" [(ngModel)]="msgValue" placeholder="Type and press enter"/>
+        <input type="text" name="msg-input" class="form-control message-box" [(ngModel)]="msgValue" placeholder="Type and press enter"/>
     </form>
 </div>

@@ -1,0 +1,74 @@
+.message-container {
+    width: 220px;
+    height: 100%;
+    border-left: 1px solid rgba(0, 0, 0, 0.50);
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 9;
+    box-shadow: -4px 0px 10px 0px rgba(0, 0, 0, 0.50);
+}
+
+.msg-header {
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+}
+
+.message-container .messages {
+    max-height: calc(100% - 100px);
+    position: absolute;
+    bottom: 50px;
+}
+
+.msg-item {
+    font-size: 20px;
+    width: 200px;
+    max-width: 200px;
+    margin-top: 10px;
+}
+
+.msg-left {
+    position: relative;
+    text-align: left;
+    float: left;
+    clear: both;
+}
+
+.msg-right {
+    position: relative;
+    text-align: right;
+    float: right;
+    clear: both;
+}
+
+.msg-owner{
+    font-size: 10px;
+    color: #ccc;
+}
+
+.msg-text {
+    border-radius: 10px;
+    border: 1px solid #cacaca;
+    overflow-wrap: break-word;
+    max-width: 180px;
+    padding: 5px;
+}
+
+.msg-right .msg-text {
+    float: right;
+    background-color: #039be6;
+}
+
+.msg-left .msg-text {
+    float: left;
+    background-color: #ff7000;
+}
+
+.message-box {
+    bottom: 0;
+    position: absolute;
+    width: 200px;
+}

@@ -15,9 +15,8 @@ mongoose.connection.openUri(config.dbUrl, (err) => {
     }
 });
 
-router.get('/messages/:id/:user', (req, res) => {
+router.get('/messages/:id', (req, res) => {
     let id = req.params.id;
-    let userId = req.params.user;
     Drawing.findById(id)
         .populate('messages')
         .exec((err, drawing) => {
@@ -31,14 +30,14 @@ router.get('/messages/:id/:user', (req, res) => {
 
 router.post('/send/message', (req, res) => {
     let id = req.body.docId;
-    let userId = req.body.userId;
+    let username = req.body.username;
     let msg = req.body.msg;
     let msgId = new mongoose.Types.ObjectId();
     Messages.create(
         {
             _id: msgId,
             msg: msg,
-            by: userId
+            by: username
         },
         (err, msg) => {
             if(err){
@@ -106,7 +105,7 @@ router.post('/new', (req, res) => {
                         doc.save();
                     }
                 });
-                res.sendStatus(200);
+                res.json(doc);
             }
         }
     );

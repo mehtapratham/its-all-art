@@ -1,0 +1,47 @@
+.drawing-item {
+    width: 200px;
+    height: 48px;
+    position: relative;
+    float: left;
+    margin: 10px;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    text-align: center;
+    line-height: 48px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.drawing-item:hover{
+    background-color: #0275d8;
+    color: #fff;
+}
+
+.drawing-items-container {
+    position: relative;
+    width: 100%;
+    min-height: 300px;
+    padding: 20px;
+}
+
+.create-new {
+    position: relative;
+    float: left;
+}
+
+.my-drawings-header {
+    position: relative;
+    float: left;
+    height: 50px;
+}
+
+.logout-btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.new-drawing-form {
+    padding: 10px;
+}
