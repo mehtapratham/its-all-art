@@ -942,7 +942,7 @@ var AppComponent = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return appConfig; });
 var appConfig = {
-    apiUrl: 'http://localhost:3000'
+    apiUrl: window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
 };
 //# sourceMappingURL=D:/Git/its-all-art/src/app.config.js.map
 
