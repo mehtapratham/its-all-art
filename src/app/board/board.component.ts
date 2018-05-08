@@ -19,7 +19,7 @@ export class BoardComponent implements OnInit {
     project2: Project;
     mouseDown: boolean = false;
     curTool: number = 0;
-    tools: string[] = ["Pencil", "Square", "Rectangle", "Circle"];
+    tools: string[] = ["Pencil", "Square", "Rectangle", "Circle", "Free hand"];
     startX: number;
     startY: number;
     curPath: Path = null;

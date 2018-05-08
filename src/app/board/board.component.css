@@ -4,7 +4,7 @@
 .app-board-container {
     position: relative;
     background: url('https://i.stack.imgur.com/f42ba.gif');
-    height: 537px;
+    height: 100%;
     width: calc(100% - 220px);
     overflow: hidden;
     z-index: 8;
